@@ -1,0 +1,25 @@
+# Imagens pessoais (opcional - descomente se não quiser commitar as imagens)
+# images/*.jpg
+# images/*.jpeg
+# images/*.png
+# images/*.webp
+# !images/README.md
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temporários
+*.tmp
+*.temp

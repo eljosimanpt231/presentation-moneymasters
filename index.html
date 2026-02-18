@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Solutions — Apresentação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #12121a;
+    --accent: #4f8cff;
+    --accent-glow: rgba(79, 140, 255, 0.15);
+    --text: #e8e8ef;
+    --text-dim: #6b6b80;
+    --text-bright: #ffffff;
+    --border: rgba(255,255,255,0.06);
+    --gradient-1: linear-gradient(135deg, #4f8cff, #a855f7);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(180px);
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bg-glow-1 {
+    background: #4f8cff;
+    top: -200px;
+    right: -100px;
+  }
+
+  .bg-glow-2 {
+    background: #a855f7;
+    bottom: -200px;
+    left: -100px;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .logo {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .subtitle {
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--text-dim);
+    margin-bottom: 48px;
+    line-height: 1.5;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 36px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-bright);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(79, 140, 255, 0.2);
+  }
+
+  .cta-button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .info {
+    margin-top: 48px;
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .info strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .auto-redirect {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<div class="container">
+  <div class="logo">AI Solutions</div>
+  <div class="subtitle">Apresentação — De uma dor real a vender soluções de IA</div>
+  
+  <a href="presentation.html" class="cta-button">
+    Iniciar Apresentação →
+  </a>
+
+  <div class="info">
+    <strong>Navegação:</strong> Use as setas do teclado (← →) ou clique nas laterais da tela.<br>
+    Pressione <strong>F</strong> para modo tela cheia durante a apresentação.
+  </div>
+
+  <div class="auto-redirect" id="countdown">
+    Redirecionando automaticamente em <span id="timer">5</span> segundos...
+  </div>
+</div>
+
+<script>
+  // Auto-redirect após 5 segundos
+  let timeLeft = 5;
+  const timerEl = document.getElementById('timer');
+  const countdownEl = document.getElementById('countdown');
+  
+  const interval = setInterval(() => {
+    timeLeft--;
+    if (timerEl) timerEl.textContent = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      window.location.href = 'presentation.html';
+    }
+  }, 1000);
+
+  // Cancelar auto-redirect se clicar no botão
+  document.querySelector('.cta-button').addEventListener('click', () => {
+    clearInterval(interval);
+    countdownEl.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
